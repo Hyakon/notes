@@ -1,0 +1,24 @@
+form {
+  box-sizing: border-box;
+  background-color: black;
+  height: 50vh;
+  padding: 1rem;
+}
+input,
+textarea {
+  padding: 2%;
+  width: 96%;
+  margin: 1% auto;
+  border: none;
+  background-color: grey;
+}
+input:focus,
+textarea:focus {
+  border: none;
+}
+input {
+}
+
+textarea {
+  height: 50%;
+}

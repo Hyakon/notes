@@ -1,0 +1,14 @@
+aside {
+  box-sizing: border-box;
+  background: black;
+  height: 100vh;
+  width: 25vw;
+  color: white;
+  border-right: 1px solid white;
+  padding: 2% 2%;
+  overflow: scroll;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}

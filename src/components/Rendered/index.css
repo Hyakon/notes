@@ -1,0 +1,7 @@
+article {
+  box-sizing: border-box;
+  background: black;
+  color: white;
+  height: 50vh;
+  padding: 2% 5%;
+}

@@ -1,0 +1,10 @@
+button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 1rem 3.5rem;
+}
+
+button:active {
+  background-color: rgb(252, 114, 114);
+}

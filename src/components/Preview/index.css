@@ -1,0 +1,40 @@
+li {
+  max-width: 100%;
+  list-style: none;
+  margin: 10% 0 20% 0%;
+  word-wrap: break-word;
+}
+a:link {
+  text-decoration: none;
+  color: white;
+}
+
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+.link-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.link-button:hover,
+.link-button:active,
+.link-button:focus {
+  text-decoration: none;
+  border: none;
+}
