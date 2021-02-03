@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const App = (props) => {
   const [myNotes, setMyNotes] = React.useState(
-    JSON.parse(localStorage.getItem("myNotes")) || []
+    () => JSON.parse(localStorage.getItem("myNotes")) || []
   );
   const [currentNote, setCurrentNote] = React.useState({
     id: uuidv4(),
@@ -94,7 +94,7 @@ const App = (props) => {
         handle={handleSelectNote}
       />
       <main>
-        <Rendered note={currentNote} />
+        <Rendered title={formTitle} content={formContent} />
         <Form
           handle={handleSubmit}
           title={formTitle}
