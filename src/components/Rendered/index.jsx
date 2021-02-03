@@ -1,15 +1,15 @@
 import React from "react";
 import "./index.css";
 
-const Rendered = (props) => {
+import showdown from "showdown";
+
+const Rendered = ({ note }) => {
+  const converter = new showdown.Converter();
+  const html = { __html: converter.makeHtml(note.content) };
   return (
     <article>
-      <h2>Notes Title</h2>
-      <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum sapiente
-        aut odio eius ipsa deleniti, quasi expedita, pariatur culpa deserunt
-        illum ea consectetur, ex molestiae? Possimus unde quod quo totam.
-      </p>
+      <h2>{note.title}</h2>
+      <div dangerouslySetInnerHTML={html}></div>
     </article>
   );
 };

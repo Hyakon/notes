@@ -10,7 +10,11 @@ const App = (props) => {
   const [myNotes, setMyNotes] = React.useState(
     JSON.parse(localStorage.getItem("myNotes")) || []
   );
-  const [currentNote, setCurrentNote] = React.useState(null);
+  const [currentNote, setCurrentNote] = React.useState({
+    id: uuidv4(),
+    title: "",
+    content: "",
+  });
 
   const [formTitle, setFormTitle] = React.useState("");
   const [formContent, setFormContent] = React.useState("");
@@ -18,7 +22,8 @@ const App = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    let isReplaced = myNotes.some((note) => note.id === currentNote.id);
+    let isReplaced =
+      currentNote && myNotes.some((note) => note.id === currentNote.id);
 
     console.log(myNotes);
     if (!isReplaced) {
@@ -56,6 +61,16 @@ const App = (props) => {
     console.log("noteClick");
   };
 
+  const handleNewNote = () => {
+    setCurrentNote({
+      id: uuidv4(),
+      title: "",
+      content: "",
+    });
+    setFormContent("");
+    setFormTitle("");
+  };
+
   React.useEffect(() => {
     console.log(currentNote);
     if (currentNote) {
@@ -73,9 +88,13 @@ const App = (props) => {
 
   return (
     <div className="container">
-      <Menu notes={myNotes} handle={handleSelectNote} />
+      <Menu
+        handleNew={handleNewNote}
+        notes={myNotes}
+        handle={handleSelectNote}
+      />
       <main>
-        <Rendered />
+        <Rendered note={currentNote} />
         <Form
           handle={handleSubmit}
           title={formTitle}

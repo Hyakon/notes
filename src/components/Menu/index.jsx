@@ -3,10 +3,10 @@ import Button from "../Button";
 import Preview from "../Preview";
 import "./index.css";
 
-const Menu = ({ notes, handle }) => {
+const Menu = ({ notes, handle, handleNew }) => {
   return (
     <aside>
-      <Button text="Ajouter une Note" />
+      <Button handle={handleNew} text="Ajouter une Note" />
       <ul>
         {notes.map((note) => (
           <Preview key={note.id} note={note} handle={handle} />
