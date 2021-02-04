@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import Button from "../Button";
 import "./index.css";
@@ -13,7 +14,9 @@ const Preview = ({ note, handle }) => {
     <li>
       <Button
         className="link-button"
-        handleArgs={handle}
+        handle={() => {
+          handle(note);
+        }}
         text={text}
         args={note}
       />

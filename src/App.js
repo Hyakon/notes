@@ -1,10 +1,10 @@
 import "./App.css";
 
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import Menu from "./components/Menu";
 import Rendered from "./components/Rendered";
 import Form from "./components/Form";
-import { v4 as uuidv4 } from "uuid";
 
 const App = (props) => {
   const [myNotes, setMyNotes] = React.useState(
@@ -22,7 +22,7 @@ const App = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    let isReplaced =
+    const isReplaced =
       currentNote && myNotes.some((note) => note.id === currentNote.id);
 
     console.log(myNotes);
@@ -33,11 +33,13 @@ const App = (props) => {
         content: e.target.elements.content.value,
       };
       console.log("submit", newNote);
-      setMyNotes(myNotes.concat(newNote));
+      // Meileur Facon
+      setMyNotes((prevState) => [...prevState, newNote]);
+      // setMyNotes(myNotes.concat(newNote));
     } else {
-      let tmp = myNotes.map((note) => {
+      const tmp = myNotes.map((note) => {
         if (note.id === currentNote.id) {
-          let newNote = {
+          const newNote = {
             id: note.id,
             title: e.target.elements.title.value,
             content: e.target.elements.content.value,
@@ -57,6 +59,7 @@ const App = (props) => {
     setFormContent(e.target.value);
   };
   const handleSelectNote = (note) => {
+    // myNotes.findIndex id
     setCurrentNote(note);
     console.log("noteClick");
   };
@@ -89,6 +92,7 @@ const App = (props) => {
   return (
     <div className="container">
       <Menu
+        // Use onNew onSelect on.. instead of Handle
         handleNew={handleNewNote}
         notes={myNotes}
         handle={handleSelectNote}
@@ -96,6 +100,7 @@ const App = (props) => {
       <main>
         <Rendered title={formTitle} content={formContent} />
         <Form
+          // onSubmit
           handle={handleSubmit}
           title={formTitle}
           content={formContent}
